@@ -1,223 +1,128 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Crypto High-Level Guide â€” HYPE, XPL & ENA</title>
 <style>
-:root{
-  --bg:#0b0f17;--panel:#121824;--panel2:#171f2e;--text:#f3f6fb;--muted:#aeb9ca;
-  --line:#263044;--green:#5de4b3;--blue:#6bb7ff;--purple:#bc93ff;--amber:#ffd078;
-  --red:#ff8f8f;--white:#fff;
-}
-*{box-sizing:border-box} html{scroll-behavior:smooth}
-body{margin:0;background:linear-gradient(180deg,#080b11 0%,#0b0f17 35%,#0d121c 100%);color:var(--text);
-font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
-a{color:var(--blue);text-decoration:none} a:hover{text-decoration:underline}
-.wrap{max-width:1120px;margin:auto;padding:0 22px}
-header{padding:64px 0 38px;border-bottom:1px solid var(--line)}
-.eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--green);font-weight:800}
-h1{font-size:clamp(38px,6vw,68px);line-height:1.02;margin:10px 0 18px;letter-spacing:-.045em}
-.lead{max-width:810px;color:var(--muted);font-size:19px}
-.date{display:inline-block;margin-top:18px;padding:7px 11px;border:1px solid var(--line);border-radius:999px;color:#cbd5e1;font-size:13px}
-nav{position:sticky;top:0;z-index:10;background:rgba(11,15,23,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;gap:18px;overflow:auto;padding-top:13px;padding-bottom:13px}
-nav a{white-space:nowrap;color:#d8e0ec;font-size:14px;font-weight:700}
-section{padding:52px 0;border-bottom:1px solid var(--line)}
-h2{font-size:32px;margin:0 0 12px;letter-spacing:-.025em}
-h3{margin:0 0 8px;font-size:20px}
-.sub{color:var(--muted);max-width:850px;margin-bottom:26px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.card{background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:18px;padding:22px}
-.coinhead{display:flex;align-items:center;gap:12px;margin-bottom:14px}
-.logo{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-weight:900;color:#0b0f17}
-.hype{background:var(--green)} .xpl{background:var(--blue)} .ena{background:var(--purple)}
-.ticker{font-size:13px;color:var(--muted);font-weight:700}
-.big{font-size:25px;font-weight:850;line-height:1.25}
-.simple{font-size:16px;color:#dbe3ef}
-.pill{display:inline-block;margin:5px 5px 0 0;padding:5px 9px;border-radius:999px;background:#202a3b;border:1px solid #2d3950;font-size:12px;color:#dbe6f4}
-.callout{border-left:4px solid var(--amber);background:#181a20;padding:18px 20px;border-radius:0 14px 14px 0;margin:22px 0;color:#e7e9ee}
-.good{border-left-color:var(--green)} .risk{border-left-color:var(--red)}
-.kv{display:grid;grid-template-columns:150px 1fr;gap:8px 16px;border-top:1px solid var(--line);padding-top:14px;margin-top:14px}
-.kv b{color:#c8d2e1}.kv span{color:#eef3fa}
-table{width:100%;border-collapse:collapse;margin-top:18px;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
-th,td{text-align:left;padding:13px 14px;border-bottom:1px solid var(--line);vertical-align:top}
-th{background:#182131;color:#d9e3f0;font-size:13px} td{color:#d9e1ec;font-size:14px}
-tr:last-child td{border-bottom:none}
-.score{font-weight:850}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
-.step{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px}
-.num{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#253147;font-weight:850;margin-bottom:10px}
-.calc{background:linear-gradient(135deg,#121a27,#101620);border:1px solid var(--line);border-radius:18px;padding:22px;margin-top:22px}
-.inputs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-label{font-size:12px;color:var(--muted);display:block;margin-bottom:5px;font-weight:700}
-input,select{width:100%;border:1px solid #344157;background:#0c111a;color:white;border-radius:10px;padding:11px 12px;font:inherit}
-.result{margin-top:16px;padding:15px;border-radius:12px;background:#0c111a;border:1px solid var(--line);font-weight:700}
-.small{font-size:12px;color:var(--muted)}
-.sources li{margin-bottom:10px;color:#cbd5e1}
-.footer{padding:36px 0 70px;color:var(--muted);font-size:13px}
-.tagline{font-size:18px;color:#fff;font-weight:800}
-gecko-coin-list-widget{display:block;width:100%} iframe{max-width:100%;width:100%} @media(max-width:820px){.grid,.steps,.inputs{grid-template-columns:1fr}.kv{grid-template-columns:1fr}th,td{padding:10px 9px;font-size:12px}}
+:root{--bg:#0b0f17;--p:#131a27;--p2:#182131;--t:#f3f6fb;--m:#aeb9ca;--line:#273248;--g:#5de4b3;--b:#6bb7ff;--v:#bc93ff;--r:#ff8f8f}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#0b0f17;color:var(--t);font:16px/1.6 system-ui,-apple-system,Segoe UI,sans-serif}
+.wrap{max-width:1100px;margin:auto;padding:0 22px}header{padding:58px 0 34px;background:linear-gradient(180deg,#080b11,#0b0f17);border-bottom:1px solid var(--line)}
+h1{font-size:clamp(38px,6vw,64px);line-height:1.02;margin:10px 0 16px;letter-spacing:-.04em}h2{font-size:30px;margin:0 0 10px}h3{margin:0 0 7px}
+.eyebrow{color:var(--g);font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}.lead,.sub,.small{color:var(--m)}.lead{max-width:800px;font-size:19px}.small{font-size:12px}
+nav{position:sticky;top:0;z-index:5;background:#0b0f17eF;border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}nav .wrap{display:flex;gap:17px;overflow:auto;padding:12px 22px}nav a{color:#dbe4ef;text-decoration:none;white-space:nowrap;font-weight:700;font-size:14px}
+section{padding:46px 0;border-bottom:1px solid var(--line)}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.card{background:linear-gradient(180deg,var(--p2),var(--p));border:1px solid var(--line);border-radius:17px;padding:20px}
+.coin{display:flex;align-items:center;gap:12px;margin-bottom:12px}.logo{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;color:#081018;font-weight:900}.h{background:var(--g)}.x{background:var(--b)}.e{background:var(--v)}
+.pill{display:inline-block;padding:4px 9px;border:1px solid #344157;background:#202a3b;border-radius:999px;font-size:12px;margin:4px 4px 0 0}.call{padding:16px 18px;margin:16px 0;border-left:4px solid var(--g);background:#151b25;border-radius:0 12px 12px 0}.risk{border-left-color:var(--r)}
+table{width:100%;border-collapse:collapse;background:var(--p);border:1px solid var(--line);margin-top:15px}th,td{padding:12px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}th{background:#182131;font-size:13px}tr:last-child td{border-bottom:0}
+.kv{display:grid;grid-template-columns:170px 1fr;gap:8px 14px;border-top:1px solid var(--line);padding-top:14px}.kv b{color:#cdd7e5}
+.calc{background:#111824;border:1px solid var(--line);border-radius:16px;padding:20px}.inputs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}label{font-size:12px;color:var(--m);font-weight:700;display:block;margin-bottom:5px}input,select{width:100%;padding:10px 11px;border-radius:9px;border:1px solid #344157;background:#0b111a;color:#fff}.result{margin-top:14px;padding:14px;background:#0b111a;border:1px solid var(--line);border-radius:10px;font-weight:700}
+a{color:var(--b)}footer{padding:35px 0 65px;color:var(--m)}
+@media(max-width:820px){.grid,.inputs{grid-template-columns:1fr}.kv{grid-template-columns:1fr}th,td{font-size:12px;padding:9px}}
 </style>
 </head>
 <body>
-<header>
-  <div class="wrap">
-    <div class="eyebrow">Beginner-Friendly Reference Guide</div>
-    <h1>Crypto High-Level Guide<br>HYPE Â· XPL Â· ENA</h1>
-    <p class="lead">A simple guide to the three crypto projects I own: what each one actually does, what the token is for, how the tokens entered circulation, what could make them more valuable, and what could go wrong.</p><p class="small">The live price panel below is powered directly by CoinGecko. It updates from CoinGecko whenever the page is opened with internet access. The educational sections remain stable reference material.</p>
-    <span class="date">Live market prices powered by CoinGecko</span>
-  </div>
-</header>
+<header><div class="wrap">
+<div class="eyebrow">Beginner-Friendly Reference Guide</div>
+<h1>Crypto High-Level Guide<br>HYPE Â· XPL Â· ENA</h1>
+<p class="lead">A simple guide to what each project does, what each token is for, how supply works, what could drive value, and what could go wrong.</p>
+<p class="small">Live market data below is provided by CoinGecko. The educational sections are a plain-English reference, not a price prediction.</p>
+</div></header>
 
-<section style="padding:24px 0;border-bottom:1px solid var(--line)">
-  <div class="wrap">
-    <div class="card">
-      <h3 style="margin-bottom:12px">Live prices</h3>
-      <p class="small" style="margin-top:0">This section is loaded directly from CoinGecko, so it does not depend on this file making its own API request.</p>
-      <div style="width:100%;overflow:hidden">
-        <script src="https://widgets.coingecko.com/gecko-coin-list-widget.js"></script>
-        <gecko-coin-list-widget
-          locale="en"
-          dark-mode="true"
-          transparent-background="true"
-          outlined="true"
-          coin-ids="hyperliquid,plasma,ethena"
-          initial-currency="usd">
-          <div style="padding:14px;color:#aeb9ca">Loading live CoinGecko pricesâ€¦</div>
-        </gecko-coin-list-widget>
-      </div>
-      <noscript><p class="small">JavaScript must be enabled to show live prices.</p></noscript>
-    </div>
-  </div>
-</section>
+<section style="padding:22px 0"><div class="wrap"><div class="card">
+<h3>Live prices</h3>
+<script src="https://widgets.coingecko.com/gecko-coin-list-widget.js"></script>
+<gecko-coin-list-widget locale="en" dark-mode="true" transparent-background="true" outlined="true" coin-ids="hyperliquid,plasma,ethena" initial-currency="usd"></gecko-coin-list-widget>
+</div></div></section>
 
-<nav><div class="wrap">
-  <a href="#quick">Quick View</a><a href="#hype">HYPE</a><a href="#xpl">XPL</a><a href="#ena">ENA</a>
-  <a href="#compare">Compare</a><a href="#upside">Upside</a><a href="#calculator">Calculator</a><a href="#glossary">Glossary</a><a href="#sources">Sources</a>
-</div></nav>
+<nav><div class="wrap"><a href="#quick">Quick View</a><a href="#hype">HYPE</a><a href="#xpl">XPL</a><a href="#ena">ENA</a><a href="#compare">Compare</a><a href="#upside">Upside</a><a href="#calc">Calculator</a><a href="#glossary">Glossary</a></div></nav>
 
-<main>
-<section id="quick"><div class="wrap">
-  <h2>The 30-second version</h2>
-  <p class="sub">These three tokens are not doing the same thing. The easiest way to remember them is: <b>HYPE = trading</b>, <b>XPL = stablecoin payments</b>, and <b>ENA = a synthetic-dollar system</b>.</p>
-  <div class="grid">
-    <div class="card">
-      <div class="coinhead"><div class="logo hype">H</div><div><div class="big">Hyperliquid</div><div class="ticker">HYPE</div></div></div>
-      <p class="simple"><b>Think:</b> a crypto-native stock exchange + blockchain.</p>
-      <p>Hyperliquid is built around fast on-chain trading, especially perpetual futures. HYPE helps secure the network, pays network costs, can reduce trading fees, and is used as gas on HyperEVM.</p>
-      <span class="pill">Trading</span><span class="pill">Layer 1</span><span class="pill">Staking</span>
-    </div>
-    <div class="card">
-      <div class="coinhead"><div class="logo xpl">X</diuns on-chain spot and perpetual-futures markets. HyperEVM lets developers build Ethereum-style apps on the same network. The official docs say HyperCore currently supports about 200,000 orders per second.</p>
-    </div>
-    <div class="card"><h3>Why does HYPE exist?</h3>
-      <p>HYPE is used for staking/network security, HyperEVM gas, network costs and trading-fee discounts. Protocol trading fees also flow into community mechanisms; the Assistance Fund automatically converts fees into HYPE and burns that HYPE.</p>
-    </div>
-    <div class="card"><h3>How was HYPE created?</h3>
-      <p>HYPE launched in November 2024 with a maximum supply of 1 billion. About 31% was set aside for the genesis distribution to users, 38.888% for future emissions/community rewards, about 23.8% for core contributors, with smaller foundation/grant allocations. Hyperliquid says it was self-funded rather than funded by outside VC capital.</p>
-    </div>
-  </div>
+<section id="quick"><div class="wrap"><h2>The 30-second version</h2><p class="sub"><b>HYPE = trading</b>, <b>XPL = stablecoin payments</b>, <b>ENA = Ethena's synthetic-dollar ecosystem</b>.</p>
+<div class="grid">
+<div class="card"><div class="coin"><div class="logo h">H</div><div><h3>Hyperliquid</h3><div class="small">HYPE</div></div></div><p><b>Think:</b> an on-chain trading platform plus its own blockchain.</p><p>People use Hyperliquid mainly for spot and perpetual-futures trading. HYPE is tied to network security, gas, fees and the broader ecosystem.</p><span class="pill">Trading</span><span class="pill">Layer 1</span><span class="pill">Staking</span></div>
+<div class="card"><div class="coin"><div class="logo x">X</div><div><h3>Plasma</h3><div class="small">XPL</div></div></div><p><b>Think:</b> a blockchain built around digital-dollar payments.</p><p>Plasma is focused on stablecoins and low-cost payments. XPL is the network's native token and is used in its security and validator system.</p><span class="pill">Stablecoins</span><span class="pill">Payments</span><span class="pill">Layer 1</span></div>
+<div class="card"><div class="coin"><div class="logo e">E</div><div><h3>Ethena</h3><div class="small">ENA</div></div></div><p><b>Think:</b> a crypto protocol built around USDe.</p><p>Ethena created USDe, a synthetic dollar. ENA is mainly the governance and staking token for the Ethena ecosystem.</p><span class="pill">USDe</span><span class="pill">DeFi</span><span class="pill">Governance</span></div>
+</div></div></section>
 
-  <div class="callout good"><b>The simple bull case:</b> If Hyperliquid keeps becoming a major place for on-chain trading, more activity can mean more demand for HYPE, more fees flowing through the ecosystem, more staking demand, and more HYPE burned.</div>
-  <div class="callout risk"><b>The simple risk:</b> HYPE already has a large valuation. It needs continued growth to justify higher prices. Contributor vesting and future community emissions can add supply, while competitors and regulation can hurt trading activity.</div>
-
-  <div class="kv">
-    <b>Saved reference price</b><span>~$81.60</span>
-    <b>Saved reference market cap</b><span>~$18.1 billion</span>
-    <b>Saved reference circulating supply</b><span>~222 million HYPE</span>
-    <b>Maximum supply</b><span>1 billion HYPE at genesis; burns can reduce total supply</span>
-    <b>Best thing to watch</b><span>Trading volume, fees, ecosystem growth, staking, burns and contributor unlocks</span>
-  </div>
+<section id="hype"><div class="wrap"><div class="coin"><div class="logo h">H</div><div><h2>Hyperliquid (HYPE)</h2><div class="small">The trading-focused one</div></div></div>
+<p class="sub">Hyperliquid is a Layer-1 blockchain built around fast on-chain financial markets. Its best-known product is a decentralized exchange for spot and perpetual-futures trading.</p>
+<div class="grid">
+<div class="card"><h3>What does it do?</h3><p>HyperCore runs the trading system. HyperEVM lets developers build Ethereum-style apps on the same network.</p></div>
+<div class="card"><h3>Why does HYPE exist?</h3><p>HYPE is used for staking/network security, HyperEVM gas and ecosystem utility. Hyperliquid's fee mechanics also create demand for HYPE through protocol mechanisms.</p></div>
+<div class="card"><h3>How was it created?</h3><p>HYPE launched with a 1 billion token maximum supply at genesis. A large share was reserved for users/community rewards, with other allocations for contributors, grants and future emissions.</p></div>
+</div>
+<div class="call"><b>Bull case:</b> Hyperliquid keeps growing into a major on-chain trading venue, activity and fees rise, and the ecosystem around HYPE expands.</div>
+<div class="call risk"><b>Main risks:</b> competition, regulation, contributor vesting and future token emissions. Because HYPE already has a large valuation, continued growth matters.</div>
+<div class="kv"><b>What to watch</b><span>Trading volume, fees, app growth, staking, burns and unlocks</span><b>Supply idea</b><span>1B max at genesis; burns and emissions affect the effective supply over time</span></div>
 </div></section>
 
-<section id="xpl"><div class="wrap">
-  <div class="coinhead"><div class="logo xpl">X</div><div><h2>Plasma (XPL)</h2><div class="ticker">The stablecoin-payments one</div></div></div>
-  <p class="sub">Plasma is a Layer-1 blockchain designed around stablecoins â€” digital tokens such as USDT that try to stay worth $1. The goal is to make digital dollars useful for everyday payments, transfers, cards, remittances and financial apps.</p>
-
-  <div class="grid">
-    <div class="card"><h3>What does it actually do?</h3>
-      <p>Plasma is the settlement network underneath products such as Plasma One. Its docs describe low-cost stablecoin transfers, fast settlement, EVM compatibility, liquidity and payment-specific infrastructure.</p>
-    </div>
-    <div class="card"><h3>Why does XPL exist?</h3>
-      <p>XPL is the native asset of the Plasma blockchain. It is designed to secure the Proof-of-Stake network, facilitate network activity and reward validators. Plasma also burns base transaction fees.</p>
-    </div>
-    <div class="card"><h3>How was XPL created?</h3>
-      <p>Plasma launched with 10 billion XPL. The original allocation was 40% ecosystem/growth, 25% team, 25% investors and 10% public sale. When external validators and delegation activate, Plasma's published design starts validator-reward inflation at 5% per year, falling by 0.5 percentage point yearly until a 3% baseline.</p>
-    </div>
-  </div>
-
-  <div class="callout good"><b>The simple bull case:</b> If stablecoins become a normal way people send and spend dollars, and Plasma becomes one of the networks that actually processes that activity, XPL could benefit from much larger network usage and demand.</div>
-  <div class="callout risk"><b>The simple risk:</b> XPL has substantial token supply still entering the market. That means Plasma can succeed as a product while XPL price still struggles if new supply grows faster than demand. It also competes with many chains that already handle stablecoins.</div>
-
-  <div class="kv">
-    <b>Saved reference price</b><span>~$0.086</span>
-    <b>Saved reference market cap</b><span>~$390 million</span>
-    <b>Saved reference circulating supply</b><span>~4.53 billion XPL</span>
-    <b>Initial supply</b><span>10 billion XPL; protocol inflation is part of the validator-reward design</span>
-    <b>Near-term supply note</b><span>CoinGecko showed an Oct. 25, 2026 unlock of about 227.8 million XPL across ecosystem/growth, investors and team.</span>
-    <b>Best thing to watch</b><span>Stablecoin balances/volume on Plasma, real payment usage, integrations, token unlocks and validator emissions</span>
-  </div>
+<section id="xpl"><div class="wrap"><div class="coin"><div class="logo x">X</div><div><h2>Plasma (XPL)</h2><div class="small">The stablecoin-payments one</div></div></div>
+<p class="sub">Plasma is a Layer-1 blockchain designed around stablecoins such as USDT. Its goal is to make digital dollars useful for payments, transfers, cards and financial apps.</p>
+<div class="grid">
+<div class="card"><h3>What does it do?</h3><p>Plasma provides a settlement network for low-cost stablecoin transfers and payment-focused apps while remaining compatible with Ethereum-style applications.</p></div>
+<div class="card"><h3>Why does XPL exist?</h3><p>XPL is the native asset of the Plasma network. It is part of the Proof-of-Stake security model and validator-reward system.</p></div>
+<div class="card"><h3>How was it created?</h3><p>Plasma launched with 10 billion XPL. The original allocation included ecosystem/growth, team, investors and a public sale. Its design also includes validator-reward inflation.</p></div>
+</div>
+<div class="call"><b>Bull case:</b> stablecoin usage keeps growing and Plasma becomes one of the networks actually processing meaningful payment volume.</div>
+<div class="call risk"><b>Main risks:</b> token unlocks and new supply can pressure price even if the product grows. Plasma also competes with many other chains handling stablecoins.</div>
+<div class="kv"><b>What to watch</b><span>Stablecoin balances, payment volume, integrations, unlocks and validator emissions</span><b>Supply idea</b><span>10B initial supply plus the protocol's validator-reward design</span></div>
 </div></section>
 
-<section id="ena"><div class="wrap">
-  <div class="coinhead"><div class="logo ena">E</div><div><h2>Ethena (ENA)</h2><div class="ticker">The synthetic-dollar one</div></div></div>
-  <p class="sub">Ethena's main product is USDe. USDe aims to behave like a digital dollar, but it is not the same kind of stablecoin as USDC or USDT. Ethena backs USDe with assets and uses offsetting short positions and other reserve strategies to control risk and generate returns.</p>
-
-  <div class="grid">
-    <div class="card"><h3>What does it actually do?</h3>
-      <p>Ethena issues USDe and sUSDe. Protocol backing can generate revenue from sources such as hedged futures trades, lending, tokenized real-world assets and stablecoin holdings. USDe users can use it across exchanges and DeFi.</p>
-    </div>
-    <div class="card"><h3>Why does ENA exist?</h3>
-      <p>ENA is Ethena's governance token. Holders help govern things such as what backs USDe, new backing strategies, future protocol-revenue allocation and the Risk Committee. ENA can also be staked into sENA.</p>
-    </div>
-    <div class="card"><h3>How was ENA created?</h3>
-      <p>ENA launched with 15 billion tokens. The published allocation was 30% core contributors, 25% investors, 15% Foundation and 30% ecosystem development/airdrops. Team and investor allocations used long vesting schedules rather than becoming liquid all at once.</p>
-    </div>
-  </div>
-
-  <div class="callout good"><b>The simple bull case:</b> If USDe becomes a major digital dollar used across exchanges and DeFi, Ethena becomes more important. That can make governance, staking and any approved value-accrual mechanisms around ENA more valuable.</div>
-  <div class="callout risk"><b>The simple risk:</b> ENA is not USDe. Owning ENA means you are betting on the value of the Ethena ecosystem/governance token. Ethena also carries special risks from hedging, exchanges/counterparties, smart contracts, funding rates and regulation. USDe itself is explicitly not the same as a fiat-backed stablecoin.</div>
-
-  <div class="kv">
-    <b>Saved reference price</b><span>~$0.206</span>
-    <b>Saved reference market cap</b><span>~$2.76 billion</span>
-    <b>Saved reference circulating supply</b><span>~13.4 billion ENA</span>
-    <b>Maximum supply</b><span>15 billion ENA</span>
-    <b>Best thing to watch</b><span>USDe supply/adoption, protocol revenue, backing health, integrations, governance changes and remaining token unlocks</span>
-  </div>
+<section id="ena"><div class="wrap"><div class="coin"><div class="logo e">E</div><div><h2>Ethena (ENA)</h2><div class="small">The synthetic-dollar one</div></div></div>
+<p class="sub">Ethena's main product is USDe. USDe is designed to behave like a digital dollar, but it is not the same as a traditional fiat-backed stablecoin such as USDC or USDT.</p>
+<div class="grid">
+<div class="card"><h3>What does it do?</h3><p>Ethena issues USDe and sUSDe. The protocol uses collateral, hedging strategies and other yield sources to support the system.</p></div>
+<div class="card"><h3>Why does ENA exist?</h3><p>ENA is the governance token. Holders help govern parts of the protocol, and ENA can also be staked through Ethena's staking system.</p></div>
+<div class="card"><h3>How was it created?</h3><p>ENA launched with a 15 billion maximum supply. Allocations included core contributors, investors, the foundation and ecosystem/airdrop programs, with vesting schedules for locked tokens.</p></div>
+</div>
+<div class="call"><b>Bull case:</b> USDe becomes a much larger digital-dollar product and Ethena remains important across exchanges and DeFi.</div>
+<div class="call risk"><b>Main risks:</b> ENA is not USDe. ENA holders are betting on the value of the wider Ethena ecosystem. Risks include hedging, counterparties, smart contracts, funding rates, governance and regulation.</div>
+<div class="kv"><b>What to watch</b><span>USDe supply/adoption, protocol revenue, backing health, integrations and unlocks</span><b>Supply idea</b><span>15B max supply</span></div>
 </div></section>
 
-<section id="compare"><div class="wrap">
-  <h2>How I should think about all three</h2>
-  <p class="sub">ThhÈ\ÈHX\ÚY\İÛÛ\\š\ÛÛˆÈÛÛYH˜XÚÈÈÚ[ˆH›Ú™XİÈİ\Ûİ[™[™ÈÛÈXÚšXØ[Ü‚ˆX›O‚ˆİ’TOİ–İ‘SOİİ‚ˆ“Û™HÙ[[˜ÙOØİ™]ÛˆÛ‹XÚZ[ˆ˜Y[™È[™œ˜\İXİ\™Oİ™]ÛˆİX›XÛÚ[ˆ^[Y[[™œ˜\İXİ\™Oİ™]Ûˆ][˜IÜÈŞ[]XËYÛ\ˆXÛÜŞ\İ[Oİİ‚ˆ“XZ[ˆ›ÙXİØİ’\\›\]ZY˜Y[™È
-È›ØÚØÚZ[İ”\ÛXHİX›XÛÚ[ˆ™]ÛÜšÈ
-È^[Y[›ÙXİÏİ•TÑHÈÕTÑOİİ‚ˆ•ÚÙ[‰ÜÈXZ[ˆ›ØØİ”ÙXİ\š]KØ\Ë™YH][]KXÛÜŞ\İ[HXÛÛ›ÛZXÜÏİ”ÙXİ\š]H[™˜[Y]ÜˆXÛÛ›ÛZXÜÏİ‘Ûİ™\›˜[˜ÙH[™İZÚ[™Ïİİ‚ˆšYÙÙ\İÜ›İİš]™\Øİ“[Ü™H˜Y[™È[™\ÈÛˆ\\›\]ZYİ“[Ü™HİX›XÛÚ[ˆ^[Y[È[™\Ù\œÏİ“[Ü™HTÑHYÜ[Ûˆ[™›İØÛÛ™]™[YOİİ‚ˆ”İ\HÛÛ˜Ù\›Øİ‘]\™H[Z\ÜÚ[ÛœÈ
-ÈÛÛšX]Üˆ™\İ[™Ïİ“\™ÙH[›ØÚÜÈ
-È[›™Y˜[Y]Üˆ[™›][Ûİ”™[XZ[š[™È™\İ[™Ëİ[›ØÚÜÈ›İYÚHÚÙ[ˆØÚY[Oİİ‚ˆİ\œ™[ØØ[OØİ“\™Ù\İ˜[X][ÛˆÙˆH™YOİ”ÛX[\İ˜[X][ÛˆÙˆH™YOİ“ZYOİİ‚ˆ”š\ÚÈ›Ùš[OØİÛ\ÜÏHœØÛÜ™H’YÚİÛ\ÜÏHœØÛÜ™H•™\HYÚİÛ\ÜÏHœØÛÜ™H•™\HYÚİİ‚ˆİX›O‚Ù]ÜÙXİ[Û‚‚ÙXİ[ÛˆYH\ÚYH]ˆÛ\ÜÏHÜ˜\‚ˆ•Ú\™HÛİ[^HÛÏÏÚ‚ˆÛ\ÜÏHœİXˆ“›Ø›ÙHØ[ˆ™\ÜÛœÚX›HÛ›İÈH]\™HšXÙKˆH™]\ˆØ^HÈ[šÈ\ÎˆÚ]X\šÙ]˜[YHÛİ[H\™Ù]šXÙH™\]Z\™OÏØˆH^[\\È™[İÈ\™H[\İ˜][ÛœÈ\Ú[™ÈHÚ\˜İ[][™Èİ\HÚİÛˆÛˆØİØ™\ˆM‹Œ‹ˆYˆÚ\˜İ[][™Èİ\H[˜Ü™X\Ù\ËHØ[YHX\šÙ]Ø\Ûİ[›ÙXÙHHİÙ\ˆšXÙKÜ‚‚ˆX›O‚ˆ•ÚÙ[İ”Ø]™Y™Y™\™[˜ÙHÛ˜\Úİİ’[\İ˜]]™H\™Ù\ˆ˜[X][Ûİ\›ŞˆšXÙH]]˜[X][ÛŠİ•Ú]Ûİ[]™HÈÛÈšYÚÏİİ‚ˆ’TOØİŸ‰NŒPˆØ\È	KŒİ‰Pœ‰œ‰ŒİŸ‰LLœŸ‰NœŸ‰Ìİ”™[XZ[ˆHÛZ[˜[Û‹XÚZ[ˆ˜Y[™È™[YKÙY\İ›Û™È™YHÙ[™\˜][Û‹^[™\\‘U“KØ\È[™X[˜YÙHİ\H[›ØÚÜËİİ‚ˆ–ØİŸ‰ÎLHØ\È	Œİ‰Pœ‰‹Pœ‰PİŸ‰ŒŒœŸ‰MOœŸ‰KŒLİ”™X[İX›XÛÚ[‹Ü^[Y[YÜ[Û‹İ›Û™È[YÜ˜][ÛœÈ[™[›İYÚ[X[™ÈXœÛÜ˜ˆ[›ØÚÜËÙ[Z\ÜÚ[ÛœËİİ‚ˆ‘SOØİŸ‰‹ÍˆØ\È	ŒŒİ‰Pœ‰Lœ‰MPİŸ‰ŒÍÏœŸ‰ÍOœŸ‰KŒLİ•TÑH™XÛÛY\È]XÚ\™Ù\ˆ[™[Ü™HÚY[H\ÙY][˜H™[XZ[œÈ™\Ú[Y[™]™[YKİ˜[YHXØÜX[[\›İ™\È[™š\ÚÜÈİ^HÛÛ›ÛYİİ‚ˆİX›O‚ˆÛ\ÜÏHœÛX[Š”\™HX\šÙ]XØ\X]›İH›Ü™XØ\İÜˆšXÙH\™Ù]ˆ\ÙH^[\\È\ÙHHØ]™YØİØ™\ˆM‹Œˆİ\HÛ˜\Úİˆ\ÙHH]™HÛÚ[‘ÙXÚÛÈ[™[X›İ™H›Üˆİ\œ™[šXÙ\ËÜ‚‚ˆ]ˆÛ\ÜÏHœİ\È‚ˆ]ˆÛ\ÜÏHœİ\]ˆÛ\ÜÏH›[HŒOÙ]Ï‘Û‰İÛÚÈ]ÛÚ[ˆšXÙH[Û™OÚÏH	ŒÚÙ[ˆ\È›İ]]ÛX]XØ[H8 'ÚX\\¸ 'H[ˆ[ˆ	ÚÙ[‹ˆX\šÙ]Ø\[™İ\HX]\‹ÜÙ]‚ˆ]ˆÛ\ÜÏHœİ\]ˆÛ\ÜÏH›[HŒÙ]Ï•Ø]ÚXİX[\ØYÙOÚÏ•H\Ú\ÈÙ]Èİ›Û™Ù\ˆÚ[ˆH›ÙXİÜ›İÜÈ8 %˜Y[™ÈÛˆ\\›\]ZY^[Y[ÈÛˆ\ÛXKÜˆTÑHYÜ[Ûˆ›Üˆ][˜KÜÙ]‚ˆ]ˆÛ\ÜÏHœİ\]ˆÛ\ÜÏH›[HŒÏÙ]Ï•Ø]Ú™]Èİ\OÚÏ’YˆZ[[ÛœÈÜˆš[[ÛœÈÙˆ™]ÈÚÙ[œÈ[›ØÚË[X[™\ÈÈXœÛÜ˜ˆ[KˆšXÙHØ[ˆ˜[]™[ˆÚ[HH›Ú™XİÙY\ÈZ[[™ËÜÙ]‚ˆÙ]‚Ù]ÜÙXİ[Û‚‚ÙXİ[ÛˆYH˜Ø[İ[]Üˆ]ˆÛ\ÜÏHÜ˜\‚ˆ’[™\İY[ØÙ[˜\š[ÈØ[İ[]ÜÚ‚ˆÛ\ÜÏHœİXˆ•\ÙH\ÈÈ[œİÙ\ˆ8 'YˆH][ˆ	K\›İ[™Ù^IÜÈÛ˜\ÚİšXÙH[™HÚÙ[ˆ™XXÚ\È××ËÚ]Ûİ[]™HÛÜø 'H]YÛ›Ü™\È™Y\È[™^\ËÜ‚ˆ]ˆÛ\ÜÏH˜Ø[È‚ˆ]ˆÛ\ÜÏHš[œ]È‚ˆ]‚ˆX™[•ÚÙ[ÛX™[‚ˆÙ[XİYH˜ÛÚ[ˆ‚ˆÜ[Ûˆ˜[YOH’THˆ]K\šXÙOHKŒ’TOÛÜ[Û‚ˆÜ[Ûˆ˜[YOH–ˆ]K\šXÙOHŒŒŒH–ÛÜ[Û‚ˆÜ[Ûˆ˜[YOH‘SHˆ]K\šXÙOHŒŒŒNH‘SOÛÜ[Û‚ˆÜÙ[Xİ‚ˆÙ]‚ˆ]X™[’[™\İY[[[İ[
-	
-OÛX™[[œ]YH˜[[İ[ˆ\OH›[X™\ˆˆ˜[YOHŒLˆZ[HŒˆİ\HLÙ]‚ˆ]X™[‘[HšXÙH
-	
-OÛX™[[œ]YH™[Hˆ\OH›[X™\ˆˆ˜[YOHKŒˆZ[HŒˆİ\HŒŒHÙ]‚ˆ]X™[‘]\™HÚÙ[ˆšXÙH
-	
-OÛX™[[œ]YH\™Ù]ˆ\OH›[X™\ˆˆ˜[YOHŒLŒˆZ[HŒˆİ\HŒŒHÙ]‚ˆÙ]‚ˆ]ˆÛ\ÜÏHœ™\İ[ˆYHœ™\İ[Ù]‚ˆÛ\ÜÏHœÛX[•\ˆÛÜHHİ\œ™[šXÙHœ›ÛHH]™HÛÚ[‘ÙXÚÛÈ[™[X›İ™H[È8 '[HšXÙx 'H›Üˆ[ˆ\]ËY]HØÙ[˜\š[Ëˆ\È]›ÚYÈœ›İÜÙ\ˆÙXİ\š]H™\İšXİ[ÛœÈ]Ø[ˆ›ØÚÈØØ[Sš[\Èœ›ÛHØ[[™ÈX›XÈT\È\™XİKÜ‚ˆÙ]‚Ù]ÜÙXİ[Û‚‚ÙXİ[ÛˆYH™ÛÜÜØ\H]ˆÛ\ÜÏHÜ˜\‚ˆ•[HÛÜÜØ\OÚ‚ˆ]ˆÛ\ÜÏH™ÜšY‚ˆ]ˆÛ\ÜÏH˜Ø\™Ï“X\šÙ]Ø\ÚÏ•ÚÙ[ˆšXÙH0åÈÚ\˜İ[][™ÈÚÙ[œËˆ\È\È[Ü™H\ÙY[[ˆÛÚÚ[™È]HÛÚ[‰ÜÈšXÙHH]Ù[‹ÜÙ]‚ˆ]ˆÛ\ÜÏH˜Ø\™ÏÚ\˜İ[][™Èİ\OÚÏ•HÚÙ[œÈÛÛœÚY\™Y]˜Z[X›H[ˆHX\šÙ]Ù^Kˆ]Ø[ˆš\ÙH\ÈØÚÙYÚÙ[œÈ[›ØÚËÜÙ]‚ˆ]ˆÛ\ÜÏH˜Ø\™Ï‘‘ÚÏ‘[H[]Y˜[X][ÛˆÚ]H›Ú™XİÛİ[™HÛÜYˆH[ÚÙ[ˆİ\HÙ\™H˜[YY]Ù^IÜÈšXÙKÜÙ]‚ˆ]ˆÛ\ÜÏH˜Ø\™Ï•ÚÙ[ˆ[›ØÚÏÚÏ”™]š[İ\ÛHØÚÙYÚÙ[œÈ™XÛÛYH]˜Z[X›HÈ[İ™HÜˆÙ[ˆ[›ØÚÜÈÈ›İİX\˜[YHÙ[[™Ë]^H[˜Ü™X\ÙHİ[X[İ\KÜÙ]‚ˆ]ˆÛ\ÜÏH˜Ø\™Ï”İZÚ[™ÏÚÏ“ØÚÚ[™ËÙ[YØ][™ÈÚÙ[œÈÈİ\ÜH™]ÛÜšÈÜˆ›İØÛÛÙ[ˆ[ˆ^Ú[™ÙH›Üˆ™]Ø\™ËÜÙ]‚ˆ]ˆÛ\ÜÏH˜Ø\™Ï”İX›XÛÚ[ÚÏHÜ\È\ÜÙ]\ÚYÛ™YÈİ^H™X\ˆH™Y™\™[˜ÙH˜[YK\İX[H	KˆY™™\™[İX›XÛÚ[œÈXZ[Z[ˆ]˜[YH[ˆY™™\™[Ø^\ËÜÙ]‚ˆÙ]‚Ù]ÜÙXİ[Û‚‚ÙXİ[ÛˆYHœÛİ\˜Ù\È]ˆÛ\ÜÏHÜ˜\‚ˆ”™\ÙX\˜ÚÛİ\˜Ù\ÏÚ‚ˆÛ\ÜÏHœİXˆ”š[X\H›Ú™XİØİ[Y[][ÛˆØ\È\ÙY›ÜˆÚ]H›Ú™XİÈÈ[™İÈZ\ˆÚÙ[œÈÛÜšËˆÛÚ[‘ÙXÚÛÈØ\È\ÙY›ÜˆHØİØ™\ˆM‹ŒˆX\šÙ]Û˜\ÚİˆX\šÙ]]HÚ[™Ù\ÈÛÛœİ[KÜ‚ˆ[Û\ÜÏHœÛİ\˜Ù\È‚ˆOH™YHšÎ‹ËÚ\\›\]ZY™Ú]›ÛÚËš[ËÚ\\›\]ZYYØÜÈˆ\™Ù]H—Ø›[šÈ’\\›\]ZYÙ™šXÚX[Øİ[Y[][Ûˆ8 %X›İ]\\›\]ZYØOÛO‚ˆOH™YHšÎ‹ËÚ\\›\]ZY™Ú]›ÛÚËš[ËÚ\\›\]ZYYØÜËØX›İ]Z\\›\]ZYÚ\\›\]ZYLLKY›Ü‹[›Û‹XÜ\ËX]YY[˜Ù\Èˆ\™Ù]H—Ø›[šÈ’\\›\]ZYLH›Üˆ›Û‹XÜ\È]YY[˜Ù\ÏØOÛO‚ˆOH™YHšÎ‹ËÚ\\›\]ZY™Ú]›ÛÚËš[ËÚ\\›\]ZYYØÜËÚ\\˜ÛÜ™KÜİZÚ[™Èˆ\™Ù]H—Ø›[šÈ’\\›\]ZYÙ™šXÚX[İZÚ[™ÈØİ[Y[][ÛØOÛO‚ˆOH™YHšÎ‹ËÚ\\›\]ZY™Ú]›ÛÚËš[ËÚ\\›\]ZYYØÜËİ˜Y[™ËÙ™Y\Èˆ\™Ù]H—Ø›[šÈ’\\›\]ZYÙ™šXÚX[™YHØİ[Y[][ÛØOÛO‚ˆOH™YHšÎ‹ËİİİË˜ÛÚ[™ÙXÚÛË˜ÛÛKÙ[‹ØÛÚ[œËÚ\\›\]ZYˆ\™Ù]H—Ø›[šÈÛÚ[‘ÙXÚÛÈ8 %THX\šÙ]]OØOÛO‚ˆOH™YHšÎ‹ËİİİËœ\ÛXK›Ü™ËÙØÜËÙÙ]\İ\YÚ[›ÙXİ[Û‹Üİ\Z\™Hˆ\™Ù]H—Ø›[šÈ”\ÛXHÙ™šXÚX[Øİ[Y[][Ûˆ8 %İ\\™OØOÛO‚ˆOH™YHšÎ‹ËİİİËœ\ÛXK›Ü™ËØÛÛ\[KØ›ÙËŞ]K\X›XË\Ø[KX[™Z]Ë\›ÛKZ[‹]K\\ÛXKYXÛÜŞ\İ[Hˆ\™Ù]H—Ø›[šÈ”\ÛXH8 %\İšX][Û‹][]H[™˜[Y]Ü‹Ú[™›][Ûˆ\ÚYÛØOÛO‚ˆOH™YHšÎ‹ËİİİË˜ÛÚ[™ÙXÚÛË˜ÛÛKÙ[‹ØÛÚ[œËÜ\ÛXHˆ\™Ù]H—Ø›[šÈÛÚ[‘ÙXÚÛÈ8 %X\šÙ]]H[™[›ØÚÈÛ˜\ÚİØOÛO‚ˆOH™YHšÎ‹ËÙØÜË™][˜K™šKÈˆ\™Ù]H—Ø›[šÈ‘][˜HÙ™šXÚX[Øİ[Y[][Ûˆ8 %›İØÛÛİ™\šY]ÏØOÛO‚ˆOH™YHšÎ‹ËÙØÜË™][˜K™šKÛİ™\šY]ËÙ[˜Hˆ\™Ù]H—Ø›[šÈ‘][˜HÙ™šXÚX[Øİ[Y[][Ûˆ8 %SHÛİ™\›˜[˜ÙH[™ÑSOØOÛO‚ˆOH™YHšÎ‹ËÜ\˜YÜ˜\˜ÛÛKĞ][˜K[XœËÙ[˜K]ÚÙ[‹[][˜Úˆ\™Ù]H—Ø›[šÈ‘][˜HXœÈ8 %SHÚÙ[ˆ][˜Ú[™[ØØ][ÛØOÛO‚ˆOH™YHšÎ‹ËİİİË˜ÛÚ[™ÙXÚÛË˜ÛÛKÙ[‹ØÛÚ[œËÙ][˜Hˆ\™Ù]H—Ø›[šÈÛÚ[‘ÙXÚÛÈ8 %SHX\šÙ]]OØOÛO‚ˆİ[‚Ù]ÜÙXİ[Û‚ÛXZ[‚‚›Ûİ\]ˆÛ\ÜÏHÜ˜\›Ûİ\ˆ‚ˆ]ˆÛ\ÜÏHYÛ[™H•H[HHÚİ[™[Y[X™\Ù]‚ˆ’H[H›İ^Z[™ÈHšXÙKˆH[H^Z[™ÈH™]]H[™\›Z[™È™]ÛÜšÈÜˆ›İØÛÛ™XÛÛY\È[Ü™H\ÙY[8 %Ú[HÜ[™È[X[™Ü›İÜÈ˜\İ\ˆ[ˆÚÙ[ˆİ\KÜ‚ˆ•\ÈİZYH\ÈYXØ][Û˜[›İH›ÛZ\ÙHÙˆ™]\›œÈÜˆ[™]šYX[^™Yš[˜[˜ÚX[YšXÙKˆÜ\ÈØ[ˆÜÙH[ÜİÜˆ[Ùˆ]È˜[YKˆšXÙ\ËÚ\˜İ[][™Èİ\Y\Ë[›ØÚÈØÚY[\È[™›İØÛÛ[\ÈØ[ˆÚ[™ÙHY\ˆ\ÈÛ˜\ÚİÜ‚Ù]Ù›Ûİ\‚‚ØÜš\‚˜ÛÛœİÛÚ[YØİ[Y[™Ù][[Y[RY
-	ØÛÚ[‰ÊNÂ˜ÛÛœİ[[İ[YØİ[Y[™Ù][[Y[RY
-	Ø[[İ[	ÊNÂ˜ÛÛœİ[OYØİ[Y[™Ù][[Y[RY
-	Ù[IÊNÂ˜ÛÛœİ\™Ù]YØİ[Y[™Ù][[Y[RY
-	İ\™Ù]	ÊNÂ˜ÛÛœİ™\İ[YØİ[Y[™Ù][[Y[RY
-	Ü™\İ[	ÊNÂ‚™[˜İ[Ûˆ›]šXÙJŠ^ÂˆYŠLL
-H™]\›ˆ	É	ÊÛ‹Ñš^Y
-ŠNÂˆYŠLJH™]\›ˆ	É	ÊÛ‹Ñš^Y
-ÊNÂˆ™]\›ˆ	É	ÊÛ‹Ñš^Y
-ŠKœ™\XÙJÌ
-ÉË	ÉÊKœ™\XÙJ×‰Ë	ÉÊNÂŸB™[˜İ[ÛˆØ[Ê
-^ÂˆÛÛœİXÚÙ\XÛÚ[‹˜[YNÂˆÛÛœİOS[X™\Š[[İ[˜[YJKOS[X™\Š[K˜[YJKS[X™\Š\™Ù]˜[YJNÂˆYŠXHYH
-^Âˆ™\İ[^ÛÛ[IÑ[\ˆ˜[Y[X™\œË‰ÎÂˆ™]\›ÂˆBˆÛÛœİÚÙ[œÏXKÙK˜[YO]ÚÙ[œÊ›Ùš]]˜[YKXKİJ›Ùš]ØJJŒLÂˆ™\İ[š[›™\’SX][ˆ[HšXÙHÙˆ‰Ù›]šXÙJJ_OØ‹		ØKÓØØ[Tİš[™Ê
-_H^\ÈX›İ]‰İÚÙ[œËÓØØ[Tİš[™Ê[™Yš[™YÛX^[][Qœ˜Xİ[Û‘YÚ]ÎŒŸJ_H	İXÚÙ\ŸOØ‹œ‚ˆYˆ	İXÚÙ\ŸH™XXÚY‰Ù›]šXÙJ
-_OØ‹]ÜÚ][ÛˆÛİ[™HÛÜX›İ]‰	İ˜[YKÓØØ[Tİš[™Ê[™Yš[™YÛX^[][Qœ˜Xİ[Û‘YÚ]ÎŒŸJ_OØˆ8 %H	Ü›Ùš]LÉÜ›Ùš]	Î‰ÛÜÜÉßHÙˆ‰Ü›Ùš]LÉÊÉÎ‰ÉßI	Ü›Ùš]ÓØØ[İš[™Ê[™Yš[™YÛX^[][Qœ˜Xİ[Û‘YÚ]ÎŒŸJ_OØˆ
-	ÜİLÉÊÉÎ‰ÉßIÜİÑš^Y
-J_IJK˜ÂŸB˜ÛÚ[‹˜Y]™[\İ[™\Š	ØÚ[™ÙIË
+<section id="compare"><div class="wrap"><h2>Simple comparison</h2>
+<table><tr><th></th><th>HYPE</th><th>XPL</th><th>ENA</th></tr>
+<tr><td><b>Main bet</b></td><td>On-chain trading grows</td><td>Stablecoin payments grow</td><td>Ethena/USDe grows</td></tr>
+<tr><td><b>Token role</b></td><td>Security, gas, ecosystem utility</td><td>Security and validator economics</td><td>Governance and staking</td></tr>
+<tr><td><b>Biggest upside driver</b></td><td>Trading volume + ecosystem growth</td><td>Payment adoption + network usage</td><td>USDe adoption + protocol growth</td></tr>
+<tr><td><b>Biggest supply concern</b></td><td>Future emissions and contributor vesting</td><td>Large unlocks plus validator inflation</td><td>Remaining vesting/unlocks</td></tr>
+<tr><td><b>Risk level</b></td><td>High</td><td>Very high</td><td>Very high</td></tr></table>
+</div></section>
 
-OOÂˆÛÛœİÜXÛÚ[‹›Ü[ÛœÖØÛÚ[‹œÙ[XİY[™^NÂˆ[K˜[YO[Ü™]\Ù]œšXÙNÂˆYŠÛÚ[‹˜[YOOOIÒTIÊH\™Ù]˜[YOLLŒÂˆYŠÛÚ[‹˜[YOOOIÖ	ÊH\™Ù]˜[YOLŒNÂˆYŠÛÚ[‹˜[YOOOIÑSIÊH\™Ù]˜[YOLLÂˆØ[Ê
-NÂŸJNÂ˜[[İ[˜Y]™[\İ[™\Š	Ú[œ]	ËØ[ÊNÂ™[K˜Y]™[\İ[™\Š	Ú[œ]	ËØ[ÊNÂ\™Ù]˜Y]™[\İ[™\Š	Ú[œ]	ËØ[ÊNÂ˜Ø[Ê
-NÂÜØÜš\‚Ø›ÙO‚Ú[‚
+<section id="upside"><div class="wrap"><h2>How to think about upside</h2><p class="sub">Do not judge upside by token price alone. A $0.08 token is not automatically cheaper than an $80 token. Market cap and supply matter more.</p>
+<div class="grid">
+<div class="card"><h3>HYPE</h3><p>Already the largest of the three by valuation, so large percentage gains require a much bigger network value. The upside case depends on Hyperliquid staying dominant and expanding.</p></div>
+<div class="card"><h3>XPL</h3><p>Smaller valuation can mean more percentage upside, but also much more risk. Supply unlocks are especially important because new tokens can dilute price momentum.</p></div>
+<div class="card"><h3>ENA</h3><p>Upside depends on USDe becoming a major digital-dollar product and ENA capturing enough value from Ethena's growth to justify a higher valuation.</p></div>
+</div></div></section>
+
+<section id="calc"><div class="wrap"><h2>Investment scenario calculator</h2><p class="sub">Use the live price panel above, then enter your actual entry price and a future price scenario.</p>
+<div class="calc"><div class="inputs">
+<div><label>Token</label><select id="coin"><option>HYPE</option><option>XPL</option><option>ENA</option></select></div>
+<div><label>Investment ($)</label><input id="amt" type="number" value="1000"></div>
+<div><label>Entry price ($)</label><input id="entry" type="number" step="0.000001" value="1"></div>
+<div><label>Future price ($)</label><input id="target" type="number" step="0.000001" value="2"></div>
+</div><div class="result" id="res"></div><p class="small">This is simple math only. It ignores fees and taxes and is not a forecast.</p></div>
+</div></section>
+
+<section id="glossary"><div class="wrap"><h2>Tiny glossary</h2><div class="grid">
+<div class="card"><h3>Market cap</h3><p>Token price Ã— circulating supply.</p></div>
+<div class="card"><h3>Circulating supply</h3><p>Tokens currently considered available in the market.</p></div>
+<div class="card"><h3>FDV</h3><p>Fully Diluted Valuation: what the project would be worth if its full token supply were valued at today's price.</p></div>
+<div class="card"><h3>Token unlock</h3><p>Previously locked tokens become available to move or sell.</p></div>
+<div class="card"><h3>Staking</h3><p>Locking or delegating tokens to support a network or protocol, often for rewards.</p></div>
+<div class="card"><h3>Stablecoin</h3><p>A crypto asset designed to stay near a reference value, usually $1.</p></div>
+</div></div></section>
+
+<section><div class="wrap"><h2>Primary sources</h2><p class="sub">Use the official documentation for the most current technical details.</p>
+<p><a href="https://hyperliquid.gitbook.io/hyperliquid-docs" target="_blank">Hyperliquid Docs</a> Â· <a href="https://www.plasma.org/docs/get-started/introduction/start-here" target="_blank">Plasma Docs</a> Â· <a href="https://docs.ethena.fi/" target="_blank">Ethena Docs</a> Â· <a href="https://www.coingecko.com/" target="_blank">CoinGecko</a></p>
+</div></section>
+
+<footer><div class="wrap"><b style="color:#fff">Rule to remember:</b><p>I am not buying a price. I am buying a bet that the underlying network or protocol becomes more useful while demand grows faster than token supply.</p><p class="small">Educational only. Crypto can lose most or all of its value.</p></div></footer>
+
+<script>
+const c=document.getElementById('coin'),a=document.getElementById('amt'),e=document.getElementById('entry'),t=document.getElementById('target'),r=document.getElementById('res');
+function calc(){const A=+a.value,E=+e.value,T=+t.value;if(!A||!E||T<0){r.textContent='Enter valid numbers.';return}const n=A/E,v=n*T,p=v-A;r.innerHTML='You would buy about <b>'+n.toLocaleString(undefined,{maximumFractionDigits:2})+' '+c.value+'</b>. If it reached <b>$'+T.toLocaleString()+'</b>, the position would be worth about <b>$'+v.toLocaleString(undefined,{maximumFractionDigits:2})+'</b> ('+(p>=0?'+':'')+'$'+p.toLocaleString(undefined,{maximumFractionDigits:2})+').'}
+[a,e,t,c].forEach(x=>x.addEventListener('input',calc));calc();
+</script>
+</body></html>
