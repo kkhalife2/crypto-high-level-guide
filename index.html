@@ -121,8 +121,6 @@ a{color:var(--b)}footer{padding:35px 0 65px;color:var(--m)}
 <p><a href="https://hyperliquid.gitbook.io/hyperliquid-docs" target="_blank">Hyperliquid Docs</a> · <a href="https://www.plasma.org/docs/get-started/introduction/start-here" target="_blank">Plasma Docs</a> · <a href="https://docs.ethena.fi/" target="_blank">Ethena Docs</a> · <a href="https://www.coingecko.com/" target="_blank">CoinGecko</a></p>
 </div></section>
 
-<footer><div class="wrap"><b style="color:#fff">Rule to remember:</b><p>I am not buying a price. I am buying a bet that the underlying network or protocol becomes more useful while demand grows faster than token supply.</p><p class="small">Educational only. Crypto can lose most or all of its value.</p></div></footer>
-
 <script>
 const c=document.getElementById('coin'),a=document.getElementById('amt'),e=document.getElementById('entry'),t=document.getElementById('target'),r=document.getElementById('res');
 function calc(){const A=+a.value,E=+e.value,T=+t.value;if(!A||!E||T<0){r.textContent='Enter valid numbers.';return}const n=A/E,v=n*T,p=v-A;r.innerHTML='You would buy about <b>'+n.toLocaleString(undefined,{maximumFractionDigits:2})+' '+c.value+'</b>. If it reached <b>$'+T.toLocaleString()+'</b>, the position would be worth about <b>$'+v.toLocaleString(undefined,{maximumFractionDigits:2})+'</b> ('+(p>=0?'+':'')+'$'+p.toLocaleString(undefined,{maximumFractionDigits:2})+').'}
